@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Va' blire te midda'?</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <br>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        var d = new Date();
+        var weekday = new Array(7);
+        weekday[0]=  "sunday";
+        weekday[1] = "monday";
+        weekday[2] = "tuesday";
+        weekday[3] = "wednesday";
+        weekday[4] = "thursday";
+        weekday[5] = "friday";
+        weekday[6] = "saturday";
+
+        var n = weekday[d.getDay()];
+
+        //var panel = $('#' + n + 'Panel');
+        window.onload = function() {
+            $('#' + n + 'Panel').attr('class', 'panel panel-primary');
+        }
+    </script>
+
+    <div class="container">
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="panel panel-default">
+              <div class="panel-heading">Lägg till maträtt</div>
+              <div class="panel-body">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Maträtt" aria-describedby="basic-addon1">
+                </div>
+
+                <br />
+
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Vem lagar?" aria-describedby="basic-addon1">
+                </div>
+
+                <br />
+
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Recept (Länk?)" aria-describedby="basic-addon1">
+                </div>
+
+                <br />
+
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                    Veckodag
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Måndag</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tisdag</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Onsdag</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Torsdag</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Fredag</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Lördag</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Söndag</a></li>
+                  </ul>
+                </div>
+
+                <br />
+
+                <button type="button" class="btn btn-default">Lägg till</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="panel panel-default" id="mondayPanel">
+              <div class="panel-heading">
+                <span class="label label-primary">Måndag</span>
+              </div>
+              <div class="panel-body">
+                Mat
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default" id="tuesdayPanel">
+              <div class="panel-heading">
+                <span class="label label-primary">Tisdag</span>
+              </div>
+              <div class="panel-body">
+                Mat
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default" id="wednesdayPanel">
+              <div class="panel-heading">
+              <span class="label label-primary">Onsdag</span>
+              </div>
+              <div class="panel-body">
+                Mat
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default" id="thursdayPanel">
+              <div class="panel-heading">
+              <span class="label label-primary">Torsdag</span>
+              </div>
+              <div class="panel-body">
+                Mat
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default" id="fridayPanel">
+              <div class="panel-heading">
+                <span class="label label-primary">Fredag</span>
+              </div>
+              <div class="panel-body">
+                Mat
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default" id="saturdayPanel">
+              <div class="panel-heading">
+                <span class="label label-primary">Lördag</span>
+              </div>
+              <div class="panel-body">
+                Mat
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default" id="sundayPanel">
+              <div class="panel-heading">
+                <span class="label label-primary">Söndag</span>
+              </div>
+              <div class="panel-body">
+                Mat
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+    </div>
+    </div>
+  </body>
+</html>
