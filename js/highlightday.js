@@ -13,6 +13,5 @@ window.onload = function() {
 
     $('#' + n + 'Panel').attr('class', 'panel panel-primary');
     $('#todayFoodId').text('Idag: ' + $('#' + n + 'FoodId').text());
-    console.log('#' + n + 'Panel');
     
 }
