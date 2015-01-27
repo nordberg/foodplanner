@@ -24,140 +24,124 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 
-    <script>
-        var d = new Date();
-        var weekday = new Array(7);
-        weekday[0]=  "sunday";
-        weekday[1] = "monday";
-        weekday[2] = "tuesday";
-        weekday[3] = "wednesday";
-        weekday[4] = "thursday";
-        weekday[5] = "friday";
-        weekday[6] = "saturday";
-
-        var n = weekday[d.getDay()];
-
-        //var panel = $('#' + n + 'Panel');
-        window.onload = function() {
-            $('#' + n + 'Panel').attr('class', 'panel panel-primary');
-        }
-    </script>
+    <script src="js/highlightday.js"></script>
 
     <div class="container">
+
+    <div class="jumbotron">
+      <p id="todayFoodId"></p>
+    </div>
+
+    
+    
     <div class="col-lg-4">
         <div class="row">
             <div class="panel panel-default">
               <div class="panel-heading">Lägg till maträtt</div>
               <div class="panel-body">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Maträtt" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control" placeholder="Maträtt" aria-describedby="basic-addon1" id="mealId">
                 </div>
 
                 <br />
 
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Vem lagar?" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control" placeholder="Vem lagar?" aria-describedby="basic-addon1" id="cookId">
                 </div>
 
                 <br />
 
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Recept (Länk?)" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control" placeholder="Recept (Länk?)" aria-describedby="basic-addon1" id="recipeId">
                 </div>
 
                 <br />
 
-                <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                    Veckodag
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Måndag</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tisdag</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Onsdag</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Torsdag</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Fredag</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Lördag</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Söndag</a></li>
-                  </ul>
-                </div>
+                <select class="form-control" style="width:196px" id="weekdayId">
+                <option value="mon">Måndag</option>
+                  <option value="tue">Tisdag</option>
+                  <option value="wed">Onsdag</option>
+                  <option value="thurs">Torsdag</option>
+                  <option value="fri">Fredag</option>
+                  <option value="sat">Lördag</option>
+                  <option value="sun">Söndag</option>
+                </select>
 
                 <br />
 
-                <button type="button" class="btn btn-default">Lägg till</button>
+                <button type="button" class="btn btn-default" id="addFoodBtn">Lägg till</button>
               </div>
             </div>
         </div>
     </div>
     <div class="col-lg-4">
         <div class="row">
-            <div class="panel panel-default" id="mondayPanel">
+            <div class="panel panel-default" id="monPanel">
               <div class="panel-heading">
                 <span class="label label-primary">Måndag</span>
               </div>
               <div class="panel-body">
-                Mat
+                <p id="monFoodId"></p>
               </div>
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default" id="tuesdayPanel">
+            <div class="panel panel-default" id="tuePanel">
               <div class="panel-heading">
                 <span class="label label-primary">Tisdag</span>
               </div>
               <div class="panel-body">
-                Mat
+                <p id="tueFoodId">William lagar spaghetti carbonara</p>
               </div>
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default" id="wednesdayPanel">
+            <div class="panel panel-default" id="wedPanel">
               <div class="panel-heading">
               <span class="label label-primary">Onsdag</span>
               </div>
               <div class="panel-body">
-                Mat
+                <p id="wedFoodId"></p>
               </div>
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default" id="thursdayPanel">
+            <div class="panel panel-default" id="thursPanel">
               <div class="panel-heading">
               <span class="label label-primary">Torsdag</span>
               </div>
               <div class="panel-body">
-                Mat
+                <p id="thursFoodId"></p>
               </div>
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default" id="fridayPanel">
+            <div class="panel panel-default" id="friPanel">
               <div class="panel-heading">
                 <span class="label label-primary">Fredag</span>
               </div>
               <div class="panel-body">
-                Mat
+                <p id="friFoodId"></p>
               </div>
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default" id="saturdayPanel">
+            <div class="panel panel-default" id="satPanel">
               <div class="panel-heading">
                 <span class="label label-primary">Lördag</span>
               </div>
               <div class="panel-body">
-                Mat
+                <p id="satFoodId"></p>
               </div>
             </div>
         </div>
         <div class="row">
-            <div class="panel panel-default" id="sundayPanel">
+            <div class="panel panel-default" id="sunPanel">
               <div class="panel-heading">
                 <span class="label label-primary">Söndag</span>
               </div>
               <div class="panel-body">
-                Mat
+                <p id="sunFoodId"></p>
               </div>
             </div>
         </div>
@@ -165,5 +149,7 @@
     <div class="col-lg-4">
     </div>
     </div>
+
+    <script src="js/updateDay.js"></script>
   </body>
 </html>
