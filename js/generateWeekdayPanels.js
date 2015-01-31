@@ -24,7 +24,6 @@ for (i = 0; i < days.length; i++) {
     panel.addClass('panel panel-default');
     if (i == 0) {
         panel.addClass('panel-primary');
-        $('#todayFoodId').text('Idag är det '+ name);
     }
     panel.attr('id', code + 'Panel');
     panel.attr('style', 'width:95%');
@@ -36,16 +35,43 @@ for (i = 0; i < days.length; i++) {
     span.addClass('label label-primary');
     span.text(name + " (" + today.getDate() + "/" + (today.getMonth() + 1) + ")");
 
+    var editIcon = $(document.createElement('span'));
+    editIcon.addClass('glyphicon glyphicon-pencil');
+    editIcon.css('float', 'right');
+
     var panelBody = $(document.createElement('div'));
     panelBody.addClass('panel-body');
 
-    var content = $(document.createElement('p'));
-    content.attr('id', code + 'FoodId');
+    var content = $(document.createElement('div'));
+
+    var showContent = $(document.createElement('div'));
+    showContent.attr('id', code + 'ShowContentId');
+    showContent.html('<span id=\'' + code + 'Cook\'></span> lagar <span id=\'' + code + 'Food\'></span>!');
+
+    var editContent = $(document.createElement('div'));
+    editContent.attr('id', code + 'EditContentId');
+
+    var inputFood = $(document.createElement('div'));
+    inputFood.addClass('input-group');
+
+    var inputFoodForm = $(document.createElement('input'));
+    inputFoodForm.attr('type', 'text');
+    inputFoodForm.attr('placeholder', 'Maträtt');
+    inputFoodForm.addClass('form-control');
+    inputFood.append(inputFoodForm);
+
+    editContent.append(inputFood);
+
+    content.append(editContent);
+    content.append(showContent);
+
+    editContent.hide();
 
     panelBody.append(content);
 
     panel.append(panelHeading);
     panelHeading.append(span);
+    panelHeading.append(editIcon);
 
     panel.append(panelBody);
 
@@ -53,13 +79,15 @@ for (i = 0; i < days.length; i++) {
 
     $('#weekdayMenuId').append(row);
 
+    // TODO: This icon should show/hide the edit/show content stuff. Not working.
+    editIcon.click( function() {
+        console.log('Editing ' + code);
+        $('#' + code + 'EditContentId').show();
+        $('#' + code + 'ShowContentId').show();
+    });
+
+
+    //$('#' + code + 'Cook').text('Marcus');
+    //$('#' + code + 'Food').text('Köttbullar');
     today.setDate(today.getDate() + 1);
 }
-
-getTodayFood = function() {
-
-};
-
-getTodayCook = function() {
-
-};
