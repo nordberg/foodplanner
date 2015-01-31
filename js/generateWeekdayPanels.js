@@ -1,4 +1,6 @@
 var days = new Array(7);
+var today = new Date();
+
 for (i = 0; i < days.length; i++) {
     days[i] = new Array(2);
 }
@@ -12,14 +14,18 @@ days[5] = ['Lördag', 'sat'];
 days[6] = ['Söndag', 'sun'];
 
 for (i = 0; i < days.length; i++) {
-    var name = days[i][0];
-    var code = days[i][1];
+    var name = days[today.getDay()][0];
+    var code = days[today.getDay()][1];
 
     var row = $(document.createElement('div'));
     row.addClass('row');
 
     var panel = $(document.createElement('div'));
     panel.addClass('panel panel-default');
+    if (i == 0) {
+        panel.addClass('panel-primary');
+        $('#todayFoodId').text('Idag är det '+ name);
+    }
     panel.attr('id', code + 'Panel');
     panel.attr('style', 'width:95%');
 
@@ -28,7 +34,7 @@ for (i = 0; i < days.length; i++) {
 
     var span = $(document.createElement('span'));
     span.addClass('label label-primary');
-    span.text(name);
+    span.text(name + " (" + today.getDate() + "/" + (today.getMonth() + 1) + ")");
 
     var panelBody = $(document.createElement('div'));
     panelBody.addClass('panel-body');
@@ -46,4 +52,14 @@ for (i = 0; i < days.length; i++) {
     row.append(panel);
 
     $('#weekdayMenuId').append(row);
+
+    today.setDate(today.getDate() + 1);
 }
+
+getTodayFood = function() {
+
+};
+
+getTodayCook = function() {
+
+};
