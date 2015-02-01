@@ -5,13 +5,14 @@ for (i = 0; i < days.length; i++) {
     days[i] = new Array(2);
 }
 
-days[0] = ['Måndag', 'mon'];
-days[1] = ['Tisdag', 'tue'];
-days[2] = ['Onsdag', 'wed'];
-days[3] = ['Torsdag', 'thurs'];
-days[4] = ['Fredag', 'fri'];
-days[5] = ['Lördag', 'sat'];
-days[6] = ['Söndag', 'sun'];
+days[0] = ['Söndag', 'sun'];
+days[1] = ['Måndag', 'mon'];
+days[2] = ['Tisdag', 'tue'];
+days[3] = ['Onsdag', 'wed'];
+days[4] = ['Torsdag', 'thurs'];
+days[5] = ['Fredag', 'fri'];
+days[6] = ['Lördag', 'sat'];
+
 
 for (i = 0; i < days.length; i++) {
     var name = days[today.getDay()][0];
