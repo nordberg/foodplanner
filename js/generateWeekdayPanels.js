@@ -37,6 +37,8 @@ for (i = 0; i < days.length; i++) {
 
     var editIcon = $(document.createElement('span'));
     editIcon.addClass('glyphicon glyphicon-pencil');
+    editIcon.attr('id', code + 'EditIconId');
+    editIcon.attr('edit', code);
     editIcon.css('float', 'right');
 
     var panelBody = $(document.createElement('div'));
@@ -46,21 +48,61 @@ for (i = 0; i < days.length; i++) {
 
     var showContent = $(document.createElement('div'));
     showContent.attr('id', code + 'ShowContentId');
-    showContent.html('<span id=\'' + code + 'Cook\'></span> lagar <span id=\'' + code + 'Food\'></span>!');
+    //showContent.html('<span id=\'' + code + 'Cook\'></span> lagar <span id=\'' + code + 'Food\'></span>!');
 
     var editContent = $(document.createElement('div'));
     editContent.attr('id', code + 'EditContentId');
 
-    var inputFood = $(document.createElement('div'));
-    inputFood.addClass('input-group');
+    var breakLine = $(document.createElement('br'));
+
+    var inputMeal = $(document.createElement('div'));
+    inputMeal.addClass('input-group');
 
     var inputFoodForm = $(document.createElement('input'));
     inputFoodForm.attr('type', 'text');
     inputFoodForm.attr('placeholder', 'Maträtt');
+    inputFoodForm.attr('id', code + 'FoodId');
     inputFoodForm.addClass('form-control');
-    inputFood.append(inputFoodForm);
+    inputMeal.append(inputFoodForm);
 
-    editContent.append(inputFood);
+    inputMeal.append(breakLine);
+
+    var inputCookForm = $(document.createElement('input'));
+    inputCookForm.attr('type', 'text');
+    inputCookForm.attr('placeholder', 'Kock');
+    inputCookForm.attr('id', code + 'CookId');
+    inputCookForm.addClass('form-control');
+    inputMeal.append(inputCookForm);
+
+    inputMeal.append(breakLine);
+
+    var inputRecipeForm = $(document.createElement('input'));
+    inputRecipeForm.attr('type', 'text');
+    inputRecipeForm.attr('placeholder', 'Receptlänk');
+    inputRecipeForm.attr('edit', code + 'RecipeId');
+    inputRecipeForm.addClass('form-control');
+    inputMeal.append(inputRecipeForm);
+
+    inputMeal.append(breakLine);
+
+    var saveButton = $(document.createElement('button'));
+    saveButton.addClass('btn btn-default');
+    saveButton.attr('edit', code);
+    saveButton.text('Spara');
+
+    saveButton.click( function(e) {
+        var code = $(this).attr('edit');
+
+        var cook = $('#' + code + 'CookId').val();
+        var food = $('#' + code + 'FoodId').val();
+
+        $('#' + code + 'ShowContentId').text(cook + ' lagar ' + food);
+        $('#' + code + 'EditContentId').toggle();
+        $('#' + code + 'ShowContentId').toggle();
+    });
+
+    editContent.append(inputMeal);
+    editContent.append(saveButton);
 
     content.append(editContent);
     content.append(showContent);
@@ -79,15 +121,10 @@ for (i = 0; i < days.length; i++) {
 
     $('#weekdayMenuId').append(row);
 
-    // TODO: This icon should show/hide the edit/show content stuff. Not working.
-    editIcon.click( function() {
-        console.log('Editing ' + code);
-        $('#' + code + 'EditContentId').show();
-        $('#' + code + 'ShowContentId').show();
+    $('#' + code + 'EditIconId').click( function() {
+        $('#' + ($(this).attr('edit')) + 'EditContentId').toggle();
+        $('#' + ($(this).attr('edit')) + 'ShowContentId').toggle();
     });
 
-
-    //$('#' + code + 'Cook').text('Marcus');
-    //$('#' + code + 'Food').text('Köttbullar');
     today.setDate(today.getDate() + 1);
 }
